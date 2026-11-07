@@ -1,5 +1,5 @@
 /* =========================================================
-   Goggins Player - by Adrian NT
+   Goggins Player - by Adrian Goggins
    ========================================================= */
 
 /* -------- 1. CATÁLOGO DE GÉNEROS Y CANCIONES --------
