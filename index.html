@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goggins · Music Player</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">G</div>
+      <div>
+        <h1>Goggins</h1>
+        <span class="tagline">Music Player · Ecualizador</span>
+      </div>
+    </div>
+    <div class="author">by <strong>Adrian NT</strong></div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="layout">
+
+    <!-- SIDEBAR / GÉNEROS -->
+    <aside class="sidebar">
+      <h2>Géneros</h2>
+      <nav id="genreList" class="genre-list"></nav>
+
+      <div class="eq-hint">
+        <p>🎛️ <strong>Ecualizador</strong></p>
+        <small>Ajusta bajos, medios y agudos en tiempo real.</small>
+      </div>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <section class="content">
+      <div class="section-head">
+        <h2 id="currentGenreTitle">Selecciona un género</h2>
+        <span id="trackCount" class="badge">0 canciones</span>
+      </div>
+
+      <ul id="trackList" class="track-list"></ul>
+    </section>
+
+    <!-- ECUALIZADOR -->
+    <aside class="eq-panel">
+      <h2>Ecualizador</h2>
+
+      <div class="eq-presets">
+        <button data-preset="flat">Plano</button>
+        <button data-preset="bass">🔊 Bass Boost</button>
+        <button data-preset="vocal">🎤 Vocal</button>
+        <button data-preset="rock">🎸 Rock</button>
+        <button data-preset="electronic">🎧 Electrónica</button>
+      </div>
+
+      <div class="sliders">
+        <div class="slider-block">
+          <label>Bajos <span id="bassVal">0dB</span></label>
+          <input type="range" id="bass" min="-20" max="20" step="1" value="0">
+        </div>
+        <div class="slider-block">
+          <label>Medios <span id="midVal">0dB</span></label>
+          <input type="range" id="mid" min="-20" max="20" step="1" value="0">
+        </div>
+        <div class="slider-block">
+          <label>Agudos <span id="trebleVal">0dB</span></label>
+          <input type="range" id="treble" min="-20" max="20" step="1" value="0">
+        </div>
+        <div class="slider-block">
+          <label>Ganancia <span id="gainVal">100%</span></label>
+          <input type="range" id="gain" min="0" max="150" step="1" value="100">
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button id="resetEq" class="btn ghost">Reset</button>
+        <button id="saveEq" class="btn">Guardar</button>
+      </div>
+      <small class="eq-note">El ecualizador usa <em>Web Audio API</em>.</small>
+    </aside>
+
+  </main>
+
+  <!-- REPRODUCTOR -->
+  <footer class="player">
+    <div class="now-playing">
+      <div class="cover" id="cover">🎵</div>
+      <div>
+        <div id="nowTitle" class="now-title">Sin reproducción</div>
+        <div id="nowArtist" class="now-artist">—</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="prev" class="ctrl">⏮</button>
+      <button id="playPause" class="ctrl main">▶</button>
+      <button id="next" class="ctrl">⏭</button>
+    </div>
+
+    <div class="progress-wrap">
+      <span id="curTime">0:00</span>
+      <input type="range" id="progress" min="0" max="100" value="0">
+      <span id="durTime">0:00</span>
+    </div>
+
+    <div class="volume-wrap">
+      🔊 <input type="range" id="volume" min="0" max="100" value="80">
+    </div>
+
+    <audio id="audio" crossorigin="anonymous"></audio>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
